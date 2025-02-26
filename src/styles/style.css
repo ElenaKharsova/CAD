@@ -5,18 +5,24 @@ body, html {
     padding: 0;
 }
 
+label{
+    font-weight: bold;
+    width: 60px;
+}
+
 .btn{
     border: solid;
     border-radius: 30px;
     background-color: rgb(50, 124, 169);
     color: aliceblue;
-    transition: transform 0.5s ease;
     width: 120px;
     height: 30px;
     size: 20px;
 }
+
 .btn:hover{
-    transform: translateY(-5px);
+    background-color: rgb(41, 101, 138);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn:focus{
@@ -46,4 +52,36 @@ body, html {
 
 .field{
     padding-bottom: 10px;
+}
+
+.add-group-form__wrap{
+    display: flex;
+    max-width: 150px;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.input-group{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.3fr 1fr;
+    gap: 10px;
+}
+
+.add-btn-wrap{
+    position: relative;
+    display: inline-block;
+}
+
+.add-group-form{
+    position: absolute;
+    border: 1px solid #ccc;
+    background: white;
+    bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.add-btn-wrap:hover .add-group-form{
+    display: block;
 }

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import * as Types from './types'
+import type * as Types from './types'
 
 
 const randomColor = (): THREE.color => new THREE.Color(Math.random(), Math.random(), Math.random());

@@ -13,7 +13,36 @@
           </div>
           <div class = "controls">
             <button class="btn btn_clear">Clear scene</button>
-            <button class="btn btn_add">Add group</button>
+            <div class="add-btn-wrap">
+              <button class="btn btn_add">Add group</button>
+              <div class="add-group-form">
+                <fieldset class="add-group-form__wrap">
+                  <div class="input-group">
+                    <label for="type">Type</label>
+                    <select id ="type">
+                      <option value="1" class="type-cube">Cube</option>
+                      <option value="2" class="type-pyramid">Pyramid</option>
+                    </select>
+                  </div>
+                  <div class="input-group">
+                    <label for = "length">Length</label>
+                    <input id= "length" type = "number" class="add-group_field" min="0">
+                  </div>
+                  <div class="input-group">
+                    <label for = "width">Width</label>
+                    <input id = "width" type = "number" class="add-group_field" min="0">
+                  </div>
+                  <div class="input-group">
+                    <label for = "height">Height</label>
+                    <input id = "height" type = "number" class="add-group_field" min="0">
+                  </div>
+                  <div class="input-group">
+                    <label for = "count">Number</label>
+                    <input id = "count" type = "number" class="add-group_field" min="0">
+                  </div>
+                </fieldset>
+              </div>
+            </div>
           </div>
         </div>
         <div class = "field"></div>
