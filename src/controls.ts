@@ -1,16 +1,18 @@
 import * as THREE from 'three';
-import type * as Types from "./types"
+import * as Types from "./types"
 import { createCubeGroup, createPyramidGroup } from './objects';
 import { threeSetup } from "./field"
 
 export function createControls(){
     const btnAdd: HTMLButtonElement | null = document.querySelector('.btn_add');
     const btnClear: HTMLButtonElement | null = document.querySelector('.btn_clear');
+
     if(!btnAdd){
         throw new Error("There isn't button for creating new group!")
     } else {
         btnAdd.addEventListener("click", createGroup);
     }
+    
     if(!btnClear){
         throw new Error("There isn't button for clearing scene!")
     } else {
@@ -19,20 +21,27 @@ export function createControls(){
 
     function createGroup(): void{
         console.log("createGroup function");
-        const length: number = document.getElementById('length')?.value;
-        const width: number = document.getElementById('width')?.value;
-        const height: number = document.getElementById('height')?.value;
-        const count: number = document.getElementById('count')?.value;
+        const length: string = (document.getElementById('length') as HTMLInputElement)?.value;
+        const width: string = (document.getElementById('width') as HTMLInputElement)?.value;
+        const height: string = (document.getElementById('height') as HTMLInputElement)?.value;
+        const count: string = (document.getElementById('count') as HTMLInputElement)?.value;
+        const typeObject: string = (document.getElementById('type') as HTMLInputElement)?.value;
+
         const dimensions: Types.Dimensions = {
-            length: length,
-            width: width,
-            height: height
+            length: +length,
+            width: +width,
+            height: +height
         }
         console.log("length", dimensions,count);
 
-    
-        createCubeGroup(threeSetup, dimensions, count);
-        createPyramidGroup(threeSetup, dimensions, count);
+        switch (typeObject){
+            case `${Types.TypeObject.Cube}`:
+                createCubeGroup(threeSetup, dimensions, +count);
+                break;
+            case `${Types.TypeObject.Pyramid}`:
+                createPyramidGroup(threeSetup, dimensions, +count);
+                break;
+        }
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
     }
 
@@ -44,7 +53,6 @@ export function createControls(){
             threeSetup.scene.remove(child);
         }
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
-        //console.log("threeSetup.scene afer clearing", threeSetup.scene.children);
     }
 }
 

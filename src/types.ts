@@ -12,3 +12,8 @@ export type ThreeSetup = {
     light: THREE.DirectionalLight,
     renderer: THREE.WebGLRenderer
 }
+
+export enum TypeObject {
+    Cube = 1,
+    Pyramid = 2
+}

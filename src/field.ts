@@ -18,5 +18,4 @@ export function createField():void{
     threeSetup.renderer.setSize( window.innerWidth*3/4, window.innerHeight);
 
     field.appendChild(threeSetup.renderer.domElement);
-    //threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
-    }
+}
