@@ -5,6 +5,9 @@ import type * as Types from './types'
 const randomColor = (): THREE.color => new THREE.Color(Math.random(), Math.random(), Math.random());
 
 function createCube(threeSetup: Types.ThreeSetup, dimensions: Types.Dimensions): void{
+    console.log("Create cube function");
+    //console.log("threeSetup.scene BEFORE new cube", threeSetup.scene.children)
+
     const meshColor: THREE.color = randomColor();
     const geometryBuffer: THREE.BufferGeometry = new THREE.BufferGeometry();
 
@@ -73,9 +76,13 @@ function createCube(threeSetup: Types.ThreeSetup, dimensions: Types.Dimensions):
     cube.position.set(randomX, randomY, randomZ);
 
     threeSetup.scene.add(cube);
+    //console.log("threeSetup.scene with new cube", threeSetup.scene.children);
 }
 
 function createPyramid(threeSetup: Types.ThreeSetup, dimensions: Types.Dimensions): void{
+    console.log("Create pyramid function");
+    //console.log("threeSetup.scene BEFORE new pyramid", threeSetup.scene.children)
+
     const meshColor: THREE.color = randomColor();
     const geometryBuffer: THREE.BufferGeometry = new THREE.BufferGeometry();
 
@@ -107,9 +114,11 @@ function createPyramid(threeSetup: Types.ThreeSetup, dimensions: Types.Dimension
     pyramid.position.set(randomX, randomY, randomZ);
 
     threeSetup.scene.add(pyramid);
+    //console.log("threeSetup.scene with new pyramid", threeSetup.scene.children);
 }
 
 export function createCubeGroup(threeSetup:Types.ThreeSetup, dimensions: Types.Dimensions, count: number): THREE.Mesh[]{
+    console.log("Create cube group function");
     const cubes: THREE.Mesh[] = []; 
     for (let i = 0; i < count; i++){
         const cube: THREE.Mesh = createCube(threeSetup, dimensions);
@@ -119,6 +128,7 @@ export function createCubeGroup(threeSetup:Types.ThreeSetup, dimensions: Types.D
 }
 
 export function createPyramidGroup(threeSetup:Types.ThreeSetup, dimensions: Types.Dimensions, count: number): THREE.Mesh[]{
+    console.log("Create pyramid group function");
     const pyramids: THREE.Mesh[] = [];
     for(let i = 0; i < count; i++){
         const pyramid: THREE.Mesh = createPyramid(threeSetup, dimensions);
