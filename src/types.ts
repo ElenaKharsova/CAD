@@ -17,3 +17,9 @@ export enum TypeObject {
     Cube = 1,
     Pyramid = 2
 }
+
+export type Object3D = {
+    type: TypeObject,
+    position: string,
+    color: string
+}

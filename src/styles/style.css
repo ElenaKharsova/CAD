@@ -10,6 +10,10 @@ label{
     width: 60px;
 }
 
+li{
+    list-style-type: none;
+}
+
 .btn{
     border: solid;
     border-radius: 30px;
@@ -38,7 +42,8 @@ label{
 
 .menu{
     display: flex;
-    flex-direction: column-reverse;
+    justify-content: space-between;
+    flex-direction: column;
     border: 2px solid black;
 }
 

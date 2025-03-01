@@ -1,7 +1,9 @@
 import * as THREE from 'three';
 import * as Types from "./types"
-import { createCubeGroup, createPyramidGroup } from './objects';
+import { createCube, createPyramid } from './objects';
 import { threeSetup } from "./field"
+import { viewList, addObjectToList } from './list';
+import { clearStorage } from './storage';
 
 export function createControls(){
     const btnAdd: HTMLButtonElement | null = document.querySelector('.btn_add');
@@ -32,17 +34,28 @@ export function createControls(){
             width: +width,
             height: +height
         }
-        console.log("length", dimensions,count);
 
-        switch (typeObject){
-            case `${Types.TypeObject.Cube}`:
-                createCubeGroup(threeSetup, dimensions, +count);
-                break;
-            case `${Types.TypeObject.Pyramid}`:
-                createPyramidGroup(threeSetup, dimensions, +count);
-                break;
-        }
+        for (let i = 0; i < +count; i++){
+            let object: THREE.Mesh = createObject(typeObject);
+            threeSetup.scene.add(object);
+            addObjectToList(object, +typeObject);  
+        }        
+        
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
+        viewList();
+
+        function createObject(typeObject: string): THREE.Mesh{
+            let object: THREE.Mesh;
+            switch (typeObject){
+                case `${Types.TypeObject.Cube}`:
+                    object = createCube(dimensions);
+                    break;
+                case `${Types.TypeObject.Pyramid}`:
+                    object = createPyramid(dimensions);
+                    break;
+            }
+            return object;
+        }
     }
 
     function cleareScene():void{
@@ -53,6 +66,8 @@ export function createControls(){
             threeSetup.scene.remove(child);
         }
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
+        (document.querySelector('.list') as HTMLUListElement).innerHTML = "";
+        clearStorage();
     }
 }
 
