@@ -42,6 +42,7 @@ export function createControls(){
         }        
         
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
+        saveObjectsToStorage(threeSetup);
         viewList();
 
         function createObject(typeObject: string): THREE.Mesh{

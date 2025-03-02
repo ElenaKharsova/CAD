@@ -11,7 +11,7 @@ export type ThreeSetup = {
     camera: THREE.PerspectiveCamera,
     light: THREE.DirectionalLight,
     renderer: THREE.WebGLRenderer
-}
+} | null;
 
 export enum TypeObject {
     Cube = 1,
