@@ -4,7 +4,6 @@ import {createControls} from './controls';
 export * from './types';
 import { viewList } from './list';
 import { threeSetup } from './field';
-//import { saveSetup } from './storage';
 
 const appEl: HTMLElement | null = document.querySelector("#app");
 
@@ -14,6 +13,7 @@ if (!appEl) {
     createField();
     createControls();
     viewList();
-    //saveSetup(threeSetup);
+    console.log("threeSetup view", threeSetup);
+    console.log("Scene children 2222222222222222222222:", threeSetup.scene.children);
     threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);    
 }

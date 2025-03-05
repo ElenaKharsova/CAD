@@ -16,6 +16,7 @@ export function addObjectToList(object3D: THREE.object3D, typeObject: number): v
 }
 
 export function viewList(): void{
+    console.log("ViewList function");
     const ul: HTMLUListElement | null = document.querySelector(".list");
 
     if(!ul){

@@ -3,9 +3,10 @@ import * as Types from "./types"
 import { createCube, createPyramid } from './objects';
 import { threeSetup } from "./field"
 import { viewList, addObjectToList } from './list';
-import { clearStorage } from './storage';
+import { clearStorage, saveObjectsToStorage } from './storage';
 
 export function createControls(){
+    console.log("createControls function");
     const btnAdd: HTMLButtonElement | null = document.querySelector('.btn_add');
     const btnClear: HTMLButtonElement | null = document.querySelector('.btn_clear');
 
@@ -40,9 +41,12 @@ export function createControls(){
             threeSetup.scene.add(object);
             addObjectToList(object, +typeObject);  
         }        
-        
+        console.log("after create cube")
+        console.log("Scene children 0000000000:", threeSetup.scene.children);
+
         threeSetup.renderer.render(threeSetup.scene, threeSetup.camera);
-        saveObjectsToStorage(threeSetup);
+        saveObjectsToStorage(threeSetup?.scene.children);
+        console.log("Scene children 11111111111111111:", threeSetup.scene.children);
         viewList();
 
         function createObject(typeObject: string): THREE.Mesh{
